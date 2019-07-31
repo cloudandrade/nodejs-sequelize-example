@@ -37,6 +37,17 @@ app.post('/criarpessoa', (req, res) => {
       })*/
 })
 
+app.get('/pessoas', (req,res) => {
+    // Find all persons
+    Pessoa.findAll().then(pessoas => {
+    res.status(200).send(JSON.stringify(pessoas, null, 4));
+  }).catch((err) => {
+    res.status(200).json({success: false, message: 'não foi possível listar as pessoas'})
+  });
+ 
+  
+})
+
 //rota para edição
 app.post('/editarpessoa', (req, res) => {
 
